@@ -4,6 +4,8 @@ LDPARAMS = -melf_i386
 
 objects = loader.o kernel.o
 
+default: $(OBJECTS) mykernel.bin
+
 %.o: %.cpp
 		g++ $(GPPPARAMS) -o $@ -c $<
 
@@ -17,4 +19,4 @@ install: mykernel.bin
 		sudo cp $< /boot/mykernel.bin
 
 clean:
-		rm $(objects) mykernel.bin
+		rm $(objects) mykernel.bin *~
