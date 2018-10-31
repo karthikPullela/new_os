@@ -1,7 +1,9 @@
-void printf(char* str) {
-  unsigned short* VideoMemory = (unsigned short*) 0xb8000;
+#include "types.h"
 
-  for (int i = 0; str[i] != '\0'; i++) {
+void printf(int8_t* str) {
+  uint16_t* VideoMemory = (uint16_t*) 0xb8000;
+
+  for (int32_t i = 0; str[i] != '\0'; i++) {
     VideoMemory[i] = (VideoMemory[i] & 0xFF00) | str[i];
   }
 }
@@ -14,7 +16,7 @@ extern "C" void callConstructors() {
     (*i)();
 }
 
-extern "C" void kernelMain(void* multiboot_structure, unsigned int magicnumber) {
+extern "C" void kernelMain(void* multiboot_structure, uint32_t magicnumber) {
   printf("Hello World\n");
   while(1);
 }
