@@ -17,15 +17,15 @@ GlobalDescriptorTable::~GlobalDescriptorTable() {
 }
 
 uint16_t GlobalDescriptorTable::DataSegmentSelector() {
-    return (uint16_t*) &dataSegmentSelector - (uint8_t*) this;
+    return (uint8_t*) &dataSegmentSelector - (uint8_t*) this;
 }
 
 uint16_t GlobalDescriptorTable::CodeSegmentSelector() {
-    return (uint16_t*) &codeSegmentSelector - (uint8_t*) this;
+    return (uint8_t*) &codeSegmentSelector - (uint8_t*) this;
 }
 
 // hardcoding the makeup of the segment descriptor object
-GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor(uint32_t base, uint32_t limit, uint8_t type) {
+GlobalDescriptorTable::SegmentDescriptor::SegmentDescriptor(uint32_t base, uint32_t limit, uint8_t flags) {
 
     uint8_t* target = (uint8_t*) this;
 
