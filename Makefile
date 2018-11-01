@@ -4,7 +4,7 @@ GPPPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-excep
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
-objects = loader.o kernel.o
+objects = loader.o gdt.o kernel.o
 
 default: $(OBJECTS) mykernel.bin
 
@@ -23,6 +23,7 @@ install: mykernel.bin
 clean:
 		rm $(objects) mykernel.bin *~
 
+# must be run on linux environment -> like ubuntu on a vm
 mykernel.iso: mykernel.bin
 		mkdir iso
 		mkdir iso/boot
@@ -38,6 +39,10 @@ mykernel.iso: mykernel.bin
 		grub-mkrescue --output=$@ iso
 		rm -rf iso
 
+# can only be run on the local mac or proper system os, not vm
 run:
 		(killall VirtualBox && sleep 1) || true
 		VirtualBox --startvm "My Operating System" &
+
+rmacs:
+	rm *~
