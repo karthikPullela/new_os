@@ -6,8 +6,8 @@ void printf(int8_t* str) {
   static uint8_t x = 0, y = 0;
   for (int32_t i = 0; str[i] != '\0'; i++) {
     switch(str[i]) {
-      '\n':
-        case y++; x=0;
+      case '\n':
+        y++; x=0;
         break;
       default:
         VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0xFF00) | str[i];
