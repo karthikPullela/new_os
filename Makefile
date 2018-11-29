@@ -21,8 +21,9 @@ mykernel.bin: linker.ld $(objects)
 install: mykernel.bin
 		sudo cp $< /boot/mykernel.bin
 
+.PHONY: clean
 clean:
-		rm $(objects) mykernel.bin *~
+		rm -f $(objects) mykernel.bin *~
 
 fullclean: clean
 		rm mykernel.iso
