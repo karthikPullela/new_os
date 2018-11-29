@@ -22,7 +22,10 @@ install: mykernel.bin
 		sudo cp $< /boot/mykernel.bin
 
 clean:
-		rm $(objects) mykernel.bin *~ mykernel.iso
+		rm $(objects) mykernel.bin *~
+
+fullclean: clean
+		rm mykernel.iso
 
 # must be run on linux environment -> like ubuntu on a vm
 mykernel.iso: mykernel.bin
