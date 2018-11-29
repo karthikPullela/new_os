@@ -6,7 +6,8 @@ LDPARAMS = -melf_i386
 
 objects = loader.o gdt.o port.o kernel.o
 
-default: $(OBJECTS) mykernel.bin
+# default: $(OBJECTS) mykernel.bin
+default: mykernel.iso
 
 %.o: %.cpp
 		g++ $(GPPPARAMS) -o $@ -c $<
@@ -21,7 +22,7 @@ install: mykernel.bin
 		sudo cp $< /boot/mykernel.bin
 
 clean:
-		rm $(objects) mykernel.bin *~
+		rm $(objects) mykernel.bin *~ mykernel.iso
 
 # must be run on linux environment -> like ubuntu on a vm
 mykernel.iso: mykernel.bin
