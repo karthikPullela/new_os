@@ -7,7 +7,7 @@ LDPARAMS = -melf_i386
 objects = loader.o gdt.o port.o interruptstubs.o interrupts.o kernel.o
 
 # default: $(OBJECTS) mykernel.bin
-default: mykernel.iso
+default: mykernel.iso clean
 
 %.o: %.cpp
 		g++ $(GPPPARAMS) -o $@ -c $<
