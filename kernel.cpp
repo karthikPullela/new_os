@@ -37,7 +37,8 @@ extern "C" void callConstructors() {
 }
 
 extern "C" void kernelMain(void* multiboot_structure, uint32_t magicnumber) {
-  printf("Hello World\n");
+  printf("Hello World -- some longer text to overwrite grub\n");
+  printf("This is Karthik text.\n");
   GlobalDescriptorTable gdt;
   while(1);
 }
